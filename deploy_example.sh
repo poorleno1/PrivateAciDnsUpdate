@@ -1,5 +1,5 @@
 resource_suffix=$RANDOM
-location=australiaeast
+location=northeurope
 resource_group_name=ExampleResourceGroup$resource_suffix
 vnet_name=ExampleVNet$resource_suffix
 vnet_cidr=10.0.0.0/16
@@ -9,7 +9,8 @@ aci_subnet_name=ExampleAciSubnet$resource_suffix
 aci_subnet_cidr=10.0.2.0/24
 aci_container_name=example-container-$resource_suffix
 aci_sidecar_image_name=example-sidecar-$resource_suffix
-acr_name=ExampleAcr$resource_suffix
+acr_name=exampleacr$resource_suffix
+acr_name2=exampleacr2$resource_suffix
 dns_zone=private.internal$resource_suffix
 dns_a_record=example$resource_suffix
 ad_rbac_service_principal=AciAzureCliServicePrincipal$resource_suffix
@@ -20,7 +21,8 @@ az group create --name $resource_group_name --location $location
 # Create a service principle
 service_principal=$(az ad sp create-for-rbac \
     --name $ad_rbac_service_principal \
-    --role "Private DNS Zone Contributor")
+    --role "Private DNS Zone Contributor" \
+    --scopes /subscriptions/45604fe9-74ee-421a-86ad-86bb3840262b/resourceGroups/ExampleResourceGroup20882)
 
 # Extract the details
 service_principal_app_id="$(echo $service_principal | jq -r '.appId')"
