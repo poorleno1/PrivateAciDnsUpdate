@@ -43,7 +43,9 @@ else
     else
         echo "Adding"
         az network private-dns record-set a create -n $A_RECORD_NAME -g $RESOURCE_GROUP  -z $DNS_ZONE_NAME
-        az network private-dns record-set a add-record --name $A_RECORD_NAME --resource-group $RESOURCE_GROUP --zone-name $DNS_ZONE_NAME --ipv4-address $ACI_IP
+        az network private-dns record-set a create -n example2088212a -g exampleresourcegroup20882 -z private.internal20882
+        az network private-dns record-set a add-record -n $A_RECORD_NAME -g $RESOURCE_GROUP -z $DNS_ZONE_NAME --ipv4-address $ACI_IP
+        az network private-dns record-set a add-record -n example2088212a -g exampleresourcegroup20882 -z private.internal20882 --ipv4-address 1.1.1.3
     fi
 fi
 
