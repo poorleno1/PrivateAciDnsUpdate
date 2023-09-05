@@ -42,7 +42,8 @@ else
         az network private-dns record-set a update --name $A_RECORD_NAME --resource-group $RESOURCE_GROUP --zone-name $DNS_ZONE_NAME --set aRecords[0].ipv4Address=$ACI_IP
     else
         echo "Adding"
-        az network private-dns record-set a add-record --record-set-name $A_RECORD_NAME  --resource-group $RESOURCE_GROUP --zone-name $DNS_ZONE_NAME --ipv4-address 0.0.0.0
+        az network private-dns record-set a add-record --record-set-name example20882 --resource-group exampleresourcegroup20882 --zone-name private.internal20882 --ipv4-address 0.0.0.0
+        #az network private-dns record-set a add-record --record-set-name $A_RECORD_NAME  --resource-group $RESOURCE_GROUP --zone-name $DNS_ZONE_NAME --ipv4-address 1.1.1.1
     fi
 fi
 
